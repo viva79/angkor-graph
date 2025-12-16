@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    { "id": "Moving in Cosmic Rhythm Retreat", "type": "Retreat" },
+    { "id": "Angkor Wat", "type": "SacredSite" },
+    { "id": "Spring Equinox", "type": "CelestialEvent" },
+    { "id": "Sunrise Pilgrimage", "type": "Experience" },
+
+    { "id": "Kbal Spean", "type": "SacredWater" },
+    { "id": "River of 1000 Lingams", "type": "SacredWater" },
+
+    { "id": "Mandala Flow", "type": "Practice" },
+    { "id": "Movement Meditation", "type": "Practice" }
+  ],
+
+  "links": [
+    {
+      "source": "Spring Equinox",
+      "target": "Angkor Wat",
+      "label": "aligns with",
+      "route": "equinox"
+    },
+    {
+      "source": "Sunrise Pilgrimage",
+      "target": "Spring Equinox",
+      "label": "occurs during",
+      "route": "equinox"
+    },
+    {
+      "source": "Sunrise Pilgrimage",
+      "target": "Moving in Cosmic Rhythm Retreat",
+      "label": "is part of",
+      "route": "equinox"
+    },
+
+    {
+      "source": "Kbal Spean",
+      "target": "River of 1000 Lingams",
+      "label": "flows through",
+      "route": "sacred-water"
+    },
+    {
+      "source": "River of 1000 Lingams",
+      "target": "Moving in Cosmic Rhythm Retreat",
+      "label": "ritual site for",
+      "route": "sacred-water"
+    },
+
+    {
+      "source": "Mandala Flow",
+      "target": "Movement Meditation",
+      "label": "expressed as",
+      "route": "movement-mandala"
+    },
+    {
+      "source": "Mandala Flow",
+      "target": "Moving in Cosmic Rhythm Retreat",
+      "label": "core practice of",
+      "route": "movement-mandala"
+    }
+  ]
+}
