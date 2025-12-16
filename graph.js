@@ -2,21 +2,34 @@ const svg = d3.select("svg");
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-d3.json("equinox-experience.json").then(data => {
+const svgGroup = svg.append("g");
+
+const zoom = d3.zoom()
+  .scaleExtent([0.5, 4])
+  .on("zoom", (event) => {
+    svgGroup.attr("transform", event.transform);
+  });
+
+svg.call(zoom);
+
+let link;
+let node;
+
+d3.json("angkor-knowledge.json").then(data => {
 
   const simulation = d3.forceSimulation(data.nodes)
-    .force("link", d3.forceLink(data.links).id(d => d.id).distance(120))
-    .force("charge", d3.forceManyBody().strength(-300))
+    .force("link", d3.forceLink(data.links).id(d => d.id).distance(130))
+    .force("charge", d3.forceManyBody().strength(-350))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-  const link = svg.append("g")
+  link = svgGroup.append("g")
     .selectAll("line")
     .data(data.links)
     .enter()
     .append("line")
     .attr("class", "link");
 
-  const node = svg.append("g")
+  node = svgGroup.append("g")
     .selectAll(".node")
     .data(data.nodes)
     .enter()
@@ -36,9 +49,6 @@ d3.json("equinox-experience.json").then(data => {
     .attr("y", 4)
     .text(d => d.id);
 
-  node.append("title")
-    .text(d => d.description);
-
   simulation.on("tick", () => {
     link
       .attr("x1", d => d.source.x)
@@ -49,6 +59,9 @@ d3.json("equinox-experience.json").then(data => {
     node
       .attr("transform", d => `translate(${d.x}, ${d.y})`);
   });
+
+  // default route
+  showRoute("equinox");
 
   function dragstarted(event, d) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -68,3 +81,25 @@ d3.json("equinox-experience.json").then(data => {
   }
 
 });
+
+window.showRoute = function(route) {
+
+  document.querySelectorAll("button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  event.target.classList.add("active");
+
+  link
+    .style("opacity", d => d.route === route ? 1 : 0.1);
+
+  node
+    .style("opacity", d => {
+      const connected = link
+        .filter(l => l.route === route)
+        .data()
+        .some(l => l.source.id === d.id || l.target.id === d.id);
+
+      return connected ? 1 : 0.2;
+    });
+};
