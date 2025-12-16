@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Equinox Experience</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+    }
+    svg {
+      width: 100vw;
+      height: 100vh;
+    }
+    .node circle {
+      fill: #333;
+      cursor: pointer;
+    }
+    .node text {
+      fill: #111;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    .link {
+      stroke: #999;
+      stroke-width: 1.5px;
+    }
+  </style>
+</head>
+<body>
+  <svg></svg>
+  <script src="graph.js"></script>
+</body>
+</html>

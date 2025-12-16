@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "Angkor Wat",
+      "type": "SacredSite",
+      "description": "The central temple where the sun aligns perfectly during the Spring Equinox."
+    },
+    {
+      "id": "Spring Equinox",
+      "type": "CelestialEvent",
+      "description": "The only time of year when the sunrise aligns exactly with Angkor Wat’s central tower."
+    },
+    {
+      "id": "Sunrise Pilgrimage",
+      "type": "Experience",
+      "description": "A guided early morning journey to witness the equinox alignment."
+    },
+    {
+      "id": "Moving in Cosmic Rhythm Retreat",
+      "type": "Retreat",
+      "description": "A six-night yoga retreat centered on celestial timing and sacred movement."
+    }
+  ],
+  "links": [
+    {
+      "source": "Spring Equinox",
+      "target": "Angkor Wat",
+      "label": "aligns with"
+    },
+    {
+      "source": "Sunrise Pilgrimage",
+      "target": "Spring Equinox",
+      "label": "occurs during"
+    },
+    {
+      "source": "Sunrise Pilgrimage",
+      "target": "Angkor Wat",
+      "label": "takes place at"
+    },
+    {
+      "source": "Sunrise Pilgrimage",
+      "target": "Moving in Cosmic Rhythm Retreat",
+      "label": "is part of"
+    }
+  ]
+}
