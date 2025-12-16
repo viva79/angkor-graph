@@ -2,35 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Equinox Experience</title>
+  <title>Angkor Knowledge Map</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
+
   <style>
     body {
-      font-family: system-ui, sans-serif;
       margin: 0;
-      background: #f9f9f9;
+      font-family: system-ui, sans-serif;
+      background: #f6f6f6;
     }
-    svg {
-      width: 100vw;
-      height: 100vh;
+
+    #controls {
+      padding: 12px;
+      background: white;
+      border-bottom: 1px solid #ddd;
     }
-    .node circle {
-      fill: #333;
+
+    button {
+      margin-right: 8px;
+      padding: 8px 14px;
+      border: 1px solid #333;
+      background: white;
       cursor: pointer;
     }
-    .node text {
-      fill: #111;
-      font-size: 12px;
-      pointer-events: none;
+
+    button.active {
+      background: #333;
+      color: white;
     }
+
+    svg {
+      width: 100vw;
+      height: calc(100vh - 60px);
+    }
+
     .link {
       stroke: #999;
-      stroke-width: 1.5px;
+      stroke-width: 2;
+    }
+
+    .node circle {
+      fill: #222;
+    }
+
+    .node text {
+      font-size: 12px;
+      pointer-events: none;
+      fill: #111;
     }
   </style>
 </head>
+
 <body>
+
+  <div id="controls">
+    <button onclick="showRoute('equinox')" class="active">The Equinox Experience</button>
+    <button onclick="showRoute('sacred-water')">Sacred Water Pilgrimage</button>
+    <button onclick="showRoute('movement-mandala')">Movement & Mandala</button>
+  </div>
+
   <svg></svg>
+
   <script src="graph.js"></script>
 </body>
 </html>
